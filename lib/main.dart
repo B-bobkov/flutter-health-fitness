@@ -11,6 +11,11 @@ import 'package:onboarding_flow/ui/screens/report_screen.dart';
 import 'package:onboarding_flow/ui/screens/reset_password_screen.dart';
 import 'package:onboarding_flow/ui/screens/ready_screen.dart';
 import 'package:onboarding_flow/ui/screens/video_screen.dart';
+import 'package:onboarding_flow/ui/screens/activity.dart';
+import 'package:onboarding_flow/ui/screens/insideoutside.dart';
+import 'package:onboarding_flow/ui/screens/nascarresults.dart';
+import 'package:onboarding_flow/ui/screens/profile.dart';
+import 'package:onboarding_flow/ui/screens/totalworkouts.dart';
 // import 'package:onboarding_flow/ui/screens/settings_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -46,10 +51,17 @@ class MyApp extends StatelessWidget {
         '/ready': (BuildContext context) => new Ready(),
         '/settings': (BuildContext context) => new SettingsScreen(),
         '/video': (BuildContext context) => new VideoPlayerScreen(),
+        '/activity': (BuildContext context) => new ActivityScreen(),
+        '/insideoutside': (BuildContext context) => new InsideOutside(),
+        '/nascarresults': (BuildContext context) => new NascarResultsScreen(),
+        '/profile': (BuildContext context) => new ProfileScreen(),
+        '/totalworkouts': (BuildContext context) => new TotalWorkouts(),
       },
       theme: ThemeData(
         primaryColor: Colors.white,
-        primarySwatch: Colors.grey,
+        // primarySwatch: Colors.grey,
+        primarySwatch: Colors.green,
+        accentColor: Colors.white,
       ),
       home: _handleCurrentScreen(),
     );

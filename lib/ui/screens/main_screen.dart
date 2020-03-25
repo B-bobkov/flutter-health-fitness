@@ -3,6 +3,11 @@ import 'package:onboarding_flow/business/auth.dart';
 import 'package:onboarding_flow/models/settings.dart';
 import 'package:onboarding_flow/ui/screens/root_screen.dart';
 import 'package:onboarding_flow/ui/screens/settings_screen.dart';
+import 'package:onboarding_flow/ui/screens/activity.dart';
+import 'package:onboarding_flow/ui/screens/insideoutside.dart';
+import 'package:onboarding_flow/ui/screens/nascarresults.dart';
+import 'package:onboarding_flow/ui/screens/profile.dart';
+import 'package:onboarding_flow/ui/screens/totalworkouts.dart';
 import 'package:onboarding_flow/ui/screens/soccerbasics_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -85,6 +90,13 @@ class _MainScreenState extends State<MainScreen> {
                   leading: Icon(Icons.contacts),
                   title: Text('Profile'),
                   onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileScreen(
+                          settings: widget.settings,
+                        )),
+                    ); 
                     _scaffoldKey.currentState.openEndDrawer();
                   },
                 ),
@@ -92,6 +104,13 @@ class _MainScreenState extends State<MainScreen> {
                   leading: Icon(Icons.brush),
                   title: Text('Activity'),
                   onTap: () {
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ActivityScreen(
+                          settings: widget.settings,
+                        )),
+                    ); 
                     _scaffoldKey.currentState.openEndDrawer();
                   },
                 ),
@@ -99,6 +118,7 @@ class _MainScreenState extends State<MainScreen> {
                   leading: Icon(Icons.school),
                   title: Text('Learn'),
                   onTap: () {
+                    // Navigator.pushNamed(context, '/totalworkouts');
                     _scaffoldKey.currentState.openEndDrawer();
                   },
                 ),
