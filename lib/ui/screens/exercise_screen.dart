@@ -291,6 +291,7 @@ class _ExerciseState extends State<Exercise> {
         isDraggable: false,
         minHeight: 0.0,
         maxHeight: 370.0,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
         controller: _pc,
         panel: new Container(
           // color: Colors.transparent,
@@ -298,31 +299,24 @@ class _ExerciseState extends State<Exercise> {
             borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
             color: Colors.white,
             boxShadow: [
-              BoxShadow(color: Colors.grey, spreadRadius: 2),
+              BoxShadow(color: Colors.black.withOpacity(0.6), spreadRadius: 2000),
             ],
           ),
           padding: const EdgeInsets.all(10.0),
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              new Text("What did you score?",
+              new Text("How many reps?",
                 style: TextStyle(
                   fontSize: 36.0,
                   fontWeight: FontWeight.bold,
+                  color: Color(0xFF3A5998),
                 ),
               ),
               new Container(
                 width: 200.0,
                 child: new TextField(
                   controller: txt,
-                  decoration: new InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green, width: 5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green, width: 5.0),
-                    ),
-                  ),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 120,

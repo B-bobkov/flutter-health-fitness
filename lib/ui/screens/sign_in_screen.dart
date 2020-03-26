@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+// import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import "package:onboarding_flow/ui/widgets/custom_text_field.dart";
 import 'package:onboarding_flow/business/auth.dart';
 import 'package:onboarding_flow/business/validator.dart';
@@ -213,42 +213,42 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
-  void _facebookLogin({BuildContext context}) async {
-    try {
-      SystemChannels.textInput.invokeMethod('TextInput.hide');
-      _changeBlackVisible();
-      FacebookLogin facebookLogin = new FacebookLogin();
-      FacebookLoginResult result = await facebookLogin
-          .logInWithReadPermissions(['email', 'public_profile']);
-      switch (result.status) {
-        case FacebookLoginStatus.loggedIn:
-          // Auth.signInWithFacebok(result.accessToken.token).then((uid) {
-          //   Auth.getCurrentFirebaseUser().then((firebaseUser) {
-          //     User user = new User(
-          //       firstName: firebaseUser.displayName,
-          //       userID: firebaseUser.uid,
-          //       email: firebaseUser.email ?? '',
-          //       profilePictureURL: firebaseUser.photoUrl ?? '',
-          //     );
-          //     Auth.addUser(user);
-          //     Navigator.of(context).pop();
-          //   });
-          // });
-          break;
-        case FacebookLoginStatus.cancelledByUser:
-        case FacebookLoginStatus.error:
-          _changeBlackVisible();
-      }
-    } catch (e) {
-      print("Error in facebook sign in: $e");
-      String exception = Auth.getExceptionText(e);
-      _showErrorAlert(
-        title: "Login failed",
-        content: exception,
-        onPressed: _changeBlackVisible,
-      );
-    }
-  }
+  // void _facebookLogin({BuildContext context}) async {
+  //   try {
+  //     SystemChannels.textInput.invokeMethod('TextInput.hide');
+  //     _changeBlackVisible();
+  //     FacebookLogin facebookLogin = new FacebookLogin();
+  //     FacebookLoginResult result = await facebookLogin
+  //         .logInWithReadPermissions(['email', 'public_profile']);
+  //     switch (result.status) {
+  //       case FacebookLoginStatus.loggedIn:
+  //         // Auth.signInWithFacebok(result.accessToken.token).then((uid) {
+  //         //   Auth.getCurrentFirebaseUser().then((firebaseUser) {
+  //         //     User user = new User(
+  //         //       firstName: firebaseUser.displayName,
+  //         //       userID: firebaseUser.uid,
+  //         //       email: firebaseUser.email ?? '',
+  //         //       profilePictureURL: firebaseUser.photoUrl ?? '',
+  //         //     );
+  //         //     Auth.addUser(user);
+  //         //     Navigator.of(context).pop();
+  //         //   });
+  //         // });
+  //         break;
+  //       case FacebookLoginStatus.cancelledByUser:
+  //       case FacebookLoginStatus.error:
+  //         _changeBlackVisible();
+  //     }
+  //   } catch (e) {
+  //     print("Error in facebook sign in: $e");
+  //     String exception = Auth.getExceptionText(e);
+  //     _showErrorAlert(
+  //       title: "Login failed",
+  //       content: exception,
+  //       onPressed: _changeBlackVisible,
+  //     );
+  //   }
+  // }
 
   void _showErrorAlert({String title, String content, VoidCallback onPressed}) {
     showDialog(

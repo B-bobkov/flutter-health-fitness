@@ -21,7 +21,7 @@ class WelcomeScreen extends StatelessWidget {
               child: new Text(
                     'Brave Fit',
                     style: TextStyle(
-                      color: Color(0xFF2A729B),
+                      color: Color(0xFF83BFE6),
                       fontSize: 52,  
                       fontFamily: 'Xbka',
                     ),
@@ -113,18 +113,22 @@ class WelcomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, "/main");
-        },
-        child: Text("Skip",
-          style: TextStyle(
-            fontSize: 16.0,
-            color: Colors.white,
-          )
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(top: 140.0),
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/main");
+          },
+          child: Text("Skip",
+            style: TextStyle(
+              fontSize: 16.0,
+              color: Colors.white,
+            )
+          ),
+          backgroundColor: Colors.green,
         ),
-        backgroundColor: Colors.green,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
     );
   }
 }

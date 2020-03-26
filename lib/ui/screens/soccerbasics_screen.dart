@@ -7,6 +7,7 @@ import 'package:onboarding_flow/ui/screens/ready_screen.dart';
 import 'package:onboarding_flow/ui/screens/main_screen.dart';
 import 'package:onboarding_flow/ui/screens/video_screen.dart';
 import 'package:onboarding_flow/ui/widgets/custom_circle_button.dart';
+import 'package:onboarding_flow/ui/widgets/custom_flat_button.dart';
 
 class SoccerBasics extends StatefulWidget {
   final FirebaseUser firebaseUser;
@@ -182,7 +183,7 @@ class _SoccerBasicsState extends State<SoccerBasics> {
             context: context,
             builder: (context) {
               return Dialog(
-                backgroundColor: Colors.white.withOpacity(0.7),
+                backgroundColor: Colors.white,
                 // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
                 elevation: 16,
                 child: Container(
@@ -201,22 +202,17 @@ class _SoccerBasicsState extends State<SoccerBasics> {
                               ),
                             ),
                           ),
-                          Text("Be prepared. Turn on the music", style: TextStyle(fontSize: 18.0),),
-                          Text("and get pumped. It's time to", style: TextStyle(fontSize: 18.0),),
-                          Text("start workout.", style: TextStyle(fontSize: 18.0),),
+                          Text("Turn on the music and get ready", style: TextStyle(fontSize: 18.0),),
+                          Text("to start your workout.", style: TextStyle(fontSize: 18.0),),
                           Padding(
                             padding: EdgeInsets.all(10.0),
                             child: ButtonTheme(
-                              minWidth: 200.0,
+                              minWidth: 260.0,
                               // height: 100.0,
-                              child: RaisedButton(
-                                color: Colors.green,
-                                child: Text("I'm ready!",
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
+                              child: CustomFlatButton(
+                                title: "I'm ready!",
+                                fontSize: 20,
+                                textColor: Colors.black,
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -224,27 +220,31 @@ class _SoccerBasicsState extends State<SoccerBasics> {
                                       builder: (context) => Ready(
                                         settings: widget.settings,
                                       )),
-                                  ); 
+                                  );
                                 },
+                                splashColor: Colors.black12,
+                                borderColor: Color(0xFFDCE2ED),
+                                borderWidth: 0,
+                                color: Color(0xFFDCE2ED),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(0.0),
+                            padding: EdgeInsets.all(10.0),
                             child: ButtonTheme(
-                              minWidth: 200.0,
+                              minWidth: 260.0,
                               // height: 100.0,
-                              child: RaisedButton(
-                                color: Colors.grey,
-                                child: Text("Need more time",
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.black,
-                                  ),
-                                ),
+                              child: CustomFlatButton(
+                                title: "Need more time",
+                                fontSize: 20,
+                                textColor: Colors.white,
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
+                                splashColor: Colors.black12,
+                                borderColor: Color(0xFF3A5998),
+                                borderWidth: 0,
+                                color: Color(0xFF3A5998),
                               ),
                             ),
                           ),

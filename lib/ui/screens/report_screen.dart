@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fit_kit/fit_kit.dart';
+// import 'package:fit_kit/fit_kit.dart';
 import 'package:onboarding_flow/models/settings.dart';
 import 'package:onboarding_flow/ui/screens/main_screen.dart';
 
@@ -11,14 +11,14 @@ class Report extends StatefulWidget {
 }
 
 class _ReportState extends State<Report> {
-  void read() async {
-    final results = await FitKit.read(
-      DataType.HEART_RATE,
-      dateFrom: DateTime.now().subtract(Duration(days: 5)),
-      dateTo: DateTime.now(),
-    );
-    print(results);
-  }
+  // void read() async {
+  //   final results = await FitKit.read(
+  //     DataType.HEART_RATE,
+  //     dateFrom: DateTime.now().subtract(Duration(days: 5)),
+  //     dateTo: DateTime.now(),
+  //   );
+  //   print(results);
+  // }
 
   AppBar appBar = AppBar(
     automaticallyImplyLeading: false,
