@@ -4,7 +4,9 @@ import 'dart:async';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:onboarding_flow/ui/screens/nascarresults.dart';
+import 'package:onboarding_flow/ui/screens/ready_screen.dart';
 import 'package:onboarding_flow/ui/screens/soccerbasics_screen.dart';
+import 'package:onboarding_flow/ui/widgets/custom_flat_button.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:audioplayers/audio_cache.dart';
@@ -78,7 +80,7 @@ class _ExerciseState extends State<Exercise> {
   int _soccercheck = 0;
   String _exerciseTxt = 'Exercise starts in...';
   int _exerciseNum = 0;
-  int _timerStop = 0;
+  // int _timerStop = 0;
   String _btnTxt = " Pause ";
   String _exerciseTitle = 'Exercise';
 
@@ -206,10 +208,12 @@ class _ExerciseState extends State<Exercise> {
     );
   }
 
+  
+
   void timerPauseStart() {
     if ( _soccercheck == 1) {
-      if (_exerciseNum < _exerciseData.length - 1) rest();
-      if (_exerciseNum == _exerciseData.length - 1) {
+      if (_exerciseNum < _exerciseData.length ) rest();
+      if (_exerciseNum == _exerciseData.length ) {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -223,19 +227,17 @@ class _ExerciseState extends State<Exercise> {
       myFocusNode.unfocus();
     } else {
 
-      if (_timerStop == 0) {
-        _timer.cancel();
-        setState(() {
-          _btnTxt = " Resume ";
-          _timerStop = 1;
-        });
-      } else {
-        startTimer();
-        setState(() {
-          _btnTxt = " Pause ";
-          _timerStop = 0;
-        });
-      }
+      showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return _exercisePopUp(); 
+        }
+      );
+      _timer.cancel();
+      setState(() {
+        _btnTxt = " Resume ";
+      });
     }
   }
 
@@ -433,5 +435,109 @@ class _ExerciseState extends State<Exercise> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
-
+  
+  Widget _exercisePopUp() {
+    return Dialog(
+      backgroundColor: Colors.white,
+      elevation: 16,
+      child: Container(
+        height: 280.0,
+        width: 360.0,
+        child: new Center(
+          child: new Container(
+            child: new Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: new Text("End Workout?",
+                    style: TextStyle(
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Text("Going back will restart the", style: TextStyle(fontSize: 18.0),),
+                Text("timer. Are you sure you", style: TextStyle(fontSize: 18.0),),
+                Text("want to do this?", style: TextStyle(fontSize: 18.0),),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: ButtonTheme(
+                    minWidth: 260.0,
+                    // height: 100.0,
+                    child: CustomFlatButton(
+                      title: "No",
+                      fontSize: 20,
+                      textColor: Colors.black,
+                      onPressed: () {
+                        startTimer();
+                        setState(() {
+                          _btnTxt = " Pause ";
+                        });
+                        Navigator.pop(context);
+                      },
+                      splashColor: Colors.black12,
+                      borderColor: Color(0xFFDCE2ED),
+                      borderWidth: 0,
+                      color: Color(0xFFDCE2ED),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: ButtonTheme(
+                    minWidth: 260.0,
+                    // height: 100.0,
+                    child: CustomFlatButton(
+                      title: "Yes",
+                      fontSize: 20,
+                      textColor: Colors.white,
+                      onPressed: () {
+                        if (_trainingcheck != 0) {
+                          if (_exerciseNum == 0) {
+                            setState(() {
+                              _exerciseTxt = 'Rest';
+                              _start = 8;
+                              _trainingcheck = 0;
+                              _exerciseTitle = "Exercise";
+                              _soccercheck = 0;
+                              _btnTxt = " Pause ";
+                            });
+                            startTimer();
+                          } else {
+                            setState(() {
+                              _exerciseNum --;
+                            });
+                            rest();
+                          }
+                        } else {
+                          if (_exerciseTitle == "Exercise") {
+                            setState(() {
+                              _exerciseTxt = 'Rest';
+                              _start = 8;
+                              _trainingcheck = 0;
+                              _exerciseTitle = "Exercise";
+                              _soccercheck = 0;
+                              _btnTxt = " Pause ";
+                            });
+                            startTimer();
+                          } else {
+                            rest();
+                          }
+                        }
+                        Navigator.pop(context);
+                      },
+                      splashColor: Colors.black12,
+                      borderColor: Color(0xFF3A5998),
+                      borderWidth: 0,
+                      color: Color(0xFF3A5998),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ), 
+      ),
+    );
+  } 
 }

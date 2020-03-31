@@ -7,6 +7,7 @@ import 'package:onboarding_flow/ui/screens/sign_up_screen.dart';
 import 'package:onboarding_flow/ui/screens/main_screen.dart';
 import 'package:onboarding_flow/ui/screens/soccerbasics_screen.dart';
 import 'package:onboarding_flow/ui/screens/exercise_screen.dart';
+import 'package:onboarding_flow/ui/screens/inout.dart';
 import 'package:onboarding_flow/ui/screens/report_screen.dart';
 import 'package:onboarding_flow/ui/screens/reset_password_screen.dart';
 import 'package:onboarding_flow/ui/screens/ready_screen.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         '/nascarresults': (BuildContext context) => new NascarResultsScreen(),
         '/profile': (BuildContext context) => new ProfileScreen(),
         '/totalworkouts': (BuildContext context) => new TotalWorkouts(),
+        '/inout': (BuildContext context) => new InOut(),
       },
       theme: ThemeData(
         primaryColor: Colors.white,

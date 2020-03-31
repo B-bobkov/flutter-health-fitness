@@ -180,6 +180,7 @@ class _SoccerBasicsState extends State<SoccerBasics> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           showDialog(
+            barrierDismissible: false,
             context: context,
             builder: (context) {
               return Dialog(

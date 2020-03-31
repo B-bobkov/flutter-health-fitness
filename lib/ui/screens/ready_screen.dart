@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'dart:async';
 import 'package:onboarding_flow/models/settings.dart';
 import 'package:onboarding_flow/ui/screens/exercise_screen.dart';
+import 'package:onboarding_flow/ui/screens/inout.dart';
 
 class Ready extends StatefulWidget {
   final Settings settings;
@@ -38,7 +39,7 @@ class _ReadyState extends State<Ready> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => Exercise(
+                builder: (context) => InOut(
                   settings: widget.settings,
                 )),
             ); 

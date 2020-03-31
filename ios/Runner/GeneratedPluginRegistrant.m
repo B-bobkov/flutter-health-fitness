@@ -28,6 +28,18 @@
 @import firebase_core;
 #endif
 
+#if __has_include(<firebase_database/FirebaseDatabasePlugin.h>)
+#import <firebase_database/FirebaseDatabasePlugin.h>
+#else
+@import firebase_database;
+#endif
+
+#if __has_include(<fit_kit/FitKitPlugin.h>)
+#import <fit_kit/FitKitPlugin.h>
+#else
+@import fit_kit;
+#endif
+
 #if __has_include(<path_provider/FLTPathProviderPlugin.h>)
 #import <path_provider/FLTPathProviderPlugin.h>
 #else
@@ -59,6 +71,8 @@
   [FLTCloudFirestorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTCloudFirestorePlugin"]];
   [FLTFirebaseAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseAuthPlugin"]];
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
+  [FLTFirebaseDatabasePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseDatabasePlugin"]];
+  [FitKitPlugin registerWithRegistrar:[registry registrarForPlugin:@"FitKitPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
   [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];
